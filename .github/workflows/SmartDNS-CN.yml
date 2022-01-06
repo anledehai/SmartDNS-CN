@@ -22,9 +22,9 @@ jobs:
     - name: Download Rules
       run: |
         cd smartdns_cn_rules
-        wget -N "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf"
-        wget -N "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf"
-        wget -N "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf"
+        wget "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf" -O accelerated-domains.china.conf
+        wget "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf" -O apple.china.conf
+        wget "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf" -O google.china.conf
         python rules.py
 
     - name: Commit
