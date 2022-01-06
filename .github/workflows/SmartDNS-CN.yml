@@ -1,9 +1,9 @@
 name: SmartDNS-CN
 
 on:
-#   push:
+  push:
   schedule:
-    - cron: '0 */24 * * *'
+    - cron: '0 3 * * *'
 
 jobs:
   build:
