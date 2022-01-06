@@ -1,7 +1,7 @@
 name: SmartDNS-CN
 
 on:
-#   push:
+  push:
   schedule:
     - cron: '0 3 * * *'
 
@@ -22,9 +22,9 @@ jobs:
     - name: Download Rules
       run: |
         cd smartdns_cn_rules
-        wget "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf" -O accelerated-domains.china.conf
-        wget "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf" -O apple.china.conf
-        wget "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf" -O google.china.conf
+        wget "https://github.com/felixonmars/dnsmasq-china-list/raw/master/accelerated-domains.china.conf" -O accelerated-domains.china.conf
+        wget "https://github.com/felixonmars/dnsmasq-china-list/raw/master/apple.china.conf" -O apple.china.conf
+        wget "https://github.com/felixonmars/dnsmasq-china-list/raw/master/google.china.conf" -O google.china.conf
         python rules.py
 
     - name: Commit
