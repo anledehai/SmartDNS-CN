@@ -1,0 +1,40 @@
+name: SmartDNS-CN
+
+on:
+#   push:
+  schedule:
+    - cron: '0 */24 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Actions/Checkout
+      uses: actions/checkout@v2
+
+    - name: Actions/Setup-Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
+    - name: Download Rules
+      run: |
+        cd smartdns_cn_rules
+        wget -N "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf"
+        wget -N "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf"
+        wget -N "https://cdn.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf"
+        python rules.py
+
+    - name: Commit
+      run: |
+        git config --global user.email touma@dymy.org
+        git config --global user.name BlackTouma
+        git add .
+        git commit -m "update" -a
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
