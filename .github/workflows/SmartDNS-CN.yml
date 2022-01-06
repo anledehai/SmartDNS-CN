@@ -1,7 +1,7 @@
 name: SmartDNS-CN
 
 on:
-  push:
+#   push:
   schedule:
     - cron: '0 3 * * *'
 
