@@ -18,9 +18,9 @@ jobs:
     - name: Download Rules
       run: |
         cd smartdns_cn_rules
-        curl  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/direct-list.txt"  > /etc/smartdns/cn.conf
-        curl  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/apple-cn.txt"    >> /etc/smartdns/cn.conf
-        curl  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/google-cn.txt"   >> /etc/smartdns/cn.conf
+        curl  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/direct-list.txt"  > ./cn.conf
+        curl  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/apple-cn.txt"    >> ./cn.conf
+        curl  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/google-cn.txt"   >> ./cn.conf
         sh rules.sh
 
     - name: Commit
